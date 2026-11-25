@@ -1,0 +1,381 @@
+/* Impact section: dark cinematic layout */
+
+#impact {
+  --ir-navy: #0a1f44;
+  --ir-navy-2: #1b2b5b;
+  --ir-orange: #ff8400;
+  --ir-amber: #ffb14d;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  padding: 96px var(--side) 104px;
+  color: #fff;
+  font-family: 'Muli', 'Segoe UI', sans-serif;
+  background:
+    radial-gradient(ellipse at 0% 0%, rgba(255,132,0,.38), transparent 55%),
+    radial-gradient(ellipse at 100% 100%, rgba(74,108,200,.5), transparent 60%),
+    linear-gradient(160deg, var(--ir-navy) 0%, var(--ir-navy-2) 100%);
+  display: block;
+}
+
+/* Dot-grid texture */
+#impact::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: radial-gradient(rgba(255,255,255,.08) 1px, transparent 1.2px);
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+
+/* Classroom photo fading in from the right */
+#impact .ir-photo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 600px;
+  height: 100%;
+  object-fit: cover;
+  opacity: .45;
+  z-index: -1;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 45%);
+  mask-image: linear-gradient(90deg, transparent, #000 45%);
+  pointer-events: none;
+}
+
+#impact .ir-inner {
+  position: relative;
+  max-width: none;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Header row */
+#impact .ir-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+}
+#impact .ir-intro { display: flex; flex-direction: column; }
+#impact .ir-eyebrow {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .22em;
+  color: var(--ir-amber);
+}
+#impact .ir-sub {
+  margin: 8px 0 0;
+  max-width: none;
+  white-space: nowrap;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: rgba(255,255,255,.8);
+}
+#impact .ir-asof {
+  display: inline-block;
+  align-self: flex-start;
+  margin-top: 12px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #ffb14d;
+  background: rgba(10,31,68,.75);
+  border: 1px solid rgba(255,177,77,.8);
+  border-radius: 999px;
+  padding: 6px 14px;
+  white-space: nowrap;
+}
+
+/* Headline figure */
+#impact .ir-hero { display: flex; flex-direction: column; }
+#impact .ir-big {
+  margin: 0;
+  font-size: 120px;
+  font-weight: 900;
+  line-height: .8;
+  letter-spacing: -.06em;
+  color: #fff;
+  text-shadow: 0 0 40px rgba(255,132,0,.35);
+}
+#impact .ir-hero-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 12px 0 0;
+  font-size: 18px;
+  font-weight: 800;
+  color: rgba(255,255,255,.92);
+}
+#impact .ir-rule {
+  width: 36px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--ir-orange);
+}
+
+/* Stat grid: 3 x 2 cards on the left, IRR card on the right */
+#impact .ir-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 18px;
+  align-items: stretch;
+}
+#impact .ir-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+#impact .ir-card {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 14px;
+  padding: 14px 16px;
+  color: #fff;
+  backdrop-filter: blur(4px);
+  transition: background .3s ease, transform .3s ease;
+}
+#impact .ir-card:hover {
+  background: rgba(255,255,255,.1);
+  transform: translateY(-2px);
+}
+#impact .ir-num {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 1;
+  color: #fff;
+}
+#impact .ir-cap {
+  margin: 6px 0 0;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: rgba(255,255,255,.75);
+}
+#impact .ir-card-accent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  background: var(--ir-orange);
+  border-color: var(--ir-orange);
+  color: #fff;
+}
+#impact .ir-card-accent:hover { background: #ff9522; }
+#impact .ir-card-accent .ir-cap { color: rgba(255,255,255,.9); }
+#impact .ir-rating {
+  margin: 0;
+  font-size: 27px;
+  font-weight: 900;
+  line-height: 1;
+  color: #fff;
+}
+#impact .ir-card-accent svg { flex-shrink: 0; }
+
+/* Read more button is hidden in this layout */
+#impact .imp-foot { display: none; }
+
+/* ---------- Tablet ---------- */
+@media (max-width: 1024px) {
+  #impact { padding: 72px var(--side) 80px; }
+  #impact .ir-photo { width: 100%; opacity: .25; }
+  #impact .ir-big { font-size: 96px; }
+  #impact .ir-grid { grid-template-columns: minmax(0, 1fr); }
+  #impact .ir-card-accent { min-height: 220px; }
+}
+
+/* ---------- Phone ---------- */
+@media (max-width: 680px) {
+  #impact { padding: 64px var(--side) 72px; }
+  #impact .ir-inner { gap: 28px; }
+  #impact .ir-top { flex-direction: column; gap: 14px; }
+  #impact .ir-sub { font-size: 16px; white-space: normal; }
+  #impact .ir-big { font-size: 84px; }
+  #impact .ir-grid { gap: 12px; }
+  #impact .ir-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  #impact .ir-card { padding: 14px; }
+  #impact .ir-num { font-size: 30px; }
+  #impact .ir-card-accent { min-height: 180px; }
+  #impact .ir-rating { font-size: 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #impact .ir-card { transition: none; }
+}
+
+/* IRR NGO badge artwork */
+#impact .ir-badge-img {
+  width: 96px;
+  height: auto;
+  mix-blend-mode: multiply;
+  align-self: flex-end;
+}
+@media (max-width: 680px) {
+  #impact .ir-badge-img { width: 76px; }
+}
+
+/* IRR card, option A: orange card with the badge on a white disc */
+#impact .ir-card-accent {
+  position: relative;
+  overflow: hidden;
+  padding: 22px 24px;
+  box-shadow: 0 18px 36px rgba(0,0,0,.25);
+}
+#impact .ir-card-accent::before {
+  content: "";
+  position: absolute;
+  right: -60px;
+  top: -60px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.12);
+  pointer-events: none;
+}
+#impact .ir-card-accent > div { position: relative; }
+#impact .ir-card-accent .ir-rating { font-size: 34px; letter-spacing: -.02em; }
+#impact .ir-card-accent .ir-cap { font-size: 16px; font-weight: 700; }
+#impact .ir-badge-disc {
+  position: relative;
+  align-self: flex-end;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(120,50,0,.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#impact .ir-badge-disc img {
+  width: 96px;
+  height: auto;
+  mix-blend-mode: normal;
+}
+@media (max-width: 680px) {
+  #impact .ir-badge-disc { width: 96px; height: 96px; }
+  #impact .ir-badge-disc img { width: 76px; }
+  #impact .ir-card-accent .ir-rating { font-size: 28px; }
+}
+
+/* Narrower stat cards (desktop): fixed-width cards grouped to the left of the IRR card */
+@media (min-width: 1025px) {
+  #impact .ir-stats {
+    grid-template-columns: repeat(3, 270px);
+    justify-content: start;
+    gap: 16px;
+  }
+}
+
+/* Wider IRR card (desktop); stat cards share the remaining width */
+@media (min-width: 1025px) {
+  #impact .ir-grid { grid-template-columns: minmax(0, 1fr) 380px; }
+  #impact .ir-stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    justify-content: stretch;
+    gap: 14px;
+  }
+  #impact .ir-card-accent .ir-rating { font-size: 40px; }
+  #impact .ir-card-accent .ir-cap { font-size: 17px; }
+}
+
+/* Stat card content centred vertically */
+#impact .ir-card:not(.ir-card-accent) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* IRR card: badge-first lockup (badge on the left, text to its right, vertically centred) */
+#impact .ir-card-accent {
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 18px;
+  padding: 22px 24px;
+}
+#impact .ir-card-accent > div:first-child { flex: 1; min-width: 0; }
+#impact .ir-card-accent .ir-badge-disc {
+  order: -1;
+  align-self: center;
+  width: 128px;
+  height: 128px;
+  flex-shrink: 0;
+}
+#impact .ir-card-accent .ir-badge-disc img { width: 100px; }
+#impact .ir-card-accent .ir-rating { font-size: 34px; }
+#impact .ir-card-accent .ir-cap { font-size: 15px; line-height: 1.35; }
+@media (min-width: 1025px) {
+  #impact .ir-card-accent .ir-rating { font-size: 34px; }
+  #impact .ir-card-accent .ir-cap { font-size: 15px; }
+}
+@media (max-width: 680px) {
+  #impact .ir-card-accent { flex-direction: column; align-items: flex-start; justify-content: space-between; }
+  #impact .ir-card-accent .ir-badge-disc { order: 0; align-self: flex-end; width: 96px; height: 96px; }
+  #impact .ir-card-accent .ir-badge-disc img { width: 76px; }
+  #impact .ir-card-accent .ir-rating { font-size: 28px; }
+}
+
+/* Slightly smaller badge disc on desktop */
+@media (min-width: 1025px) {
+  #impact .ir-card-accent .ir-badge-disc { width: 112px; height: 112px; }
+  #impact .ir-card-accent .ir-badge-disc img { width: 88px; }
+}
+
+/* Larger classroom photo on desktop */
+@media (min-width: 1025px) {
+  #impact .ir-photo { width: 760px; opacity: .5; }
+}
+
+/* Larger classroom photo on desktop (second increase) */
+@media (min-width: 1025px) {
+  #impact .ir-photo { width: 920px; opacity: .55; }
+}
+
+/* Highlight the classroom photo: clearer and brighter */
+#impact .ir-photo {
+  opacity: .8;
+  filter: brightness(1.12) saturate(1.1);
+}
+
+/* Larger stat numbers on desktop */
+@media (min-width: 1025px) {
+  #impact .ir-num { font-size: 42px; }
+}
+
+/* More space between the 1M+ headline and the stat cards */
+#impact .ir-hero { margin-bottom: 36px; }
+
+/* Equal space above and below the 1M+ headline */
+#impact .ir-top { margin-bottom: 36px; }
+
+/* Slightly tighter space around the 1M+ headline (kept equal above and below) */
+#impact .ir-top { margin-bottom: 24px; }
+#impact .ir-hero { margin-bottom: 24px; }
+
+/* Slightly darker Impact background */
+#impact {
+  background:
+    radial-gradient(ellipse at 0% 0%, rgba(255,132,0,.25), transparent 55%),
+    radial-gradient(ellipse at 100% 100%, rgba(74,108,200,.4), transparent 60%),
+    linear-gradient(160deg, #061331 0%, #13244f 100%);
+}
+
+/* Slightly darker classroom photo */
+#impact .ir-photo {
+  opacity: .65;
+  filter: brightness(.88) saturate(1.05);
+}
+
+/* "As of March 2026" tag in white */
+#impact .ir-asof {
+  color: #fff;
+  border-color: rgba(255,255,255,.75);
+}

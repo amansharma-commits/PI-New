@@ -1,0 +1,343 @@
+/* ===== Home: Section 3 (Our Approach): the child at the centre, orbit layout ===== */
+.s3 {
+  padding: 96px var(--side) 104px;
+  background: var(--white);
+  overflow: hidden;
+}
+
+.s3-head {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 780px;
+  margin-bottom: 40px;
+}
+
+.s3-title {
+  margin: 0;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+  letter-spacing: -0.2px;
+  color: var(--navy);
+}
+
+.s3-intro {
+  margin: 0;
+  font-size: 18px;
+  line-height: 30px;
+  color: #4a5568;
+}
+
+/* Stage: 16:10 canvas, the SVG viewBox uses the same ratio so the rings stay round */
+.s3-stage {
+  position: relative;
+  max-width: 980px;
+  margin: 0 auto;
+  aspect-ratio: 16 / 10;
+}
+
+.s3-stage::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 62%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(253, 229, 138, 0.42) 0%, rgba(253, 229, 138, 0) 66%);
+  pointer-events: none;
+}
+
+.s3-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  z-index: 1;
+}
+
+.s3-orbit {
+  fill: none;
+  stroke: rgba(27, 43, 91, 0.14);
+  stroke-width: 0.25;
+  stroke-dasharray: 0.6 1.2;
+}
+
+.s3-dot {
+  fill: #e8833a;
+}
+
+/* Links flow outwards from the child, like an exchange */
+.s3-l {
+  stroke: rgba(27, 43, 91, 0.32);
+  stroke-width: 0.32;
+  stroke-linecap: round;
+  stroke-dasharray: 0.9 1.3;
+  animation: s3-flow 1.6s linear infinite;
+  transition: stroke 0.25s ease, stroke-width 0.25s ease;
+}
+
+@keyframes s3-flow {
+  to { stroke-dashoffset: -2.2; }
+}
+
+.s3-node,
+.s3-child {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.s3-node {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 14px;
+  align-items: center;
+  width: min(240px, 30%);
+  padding: 14px 18px 14px 14px;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 12px 26px rgba(27, 43, 91, 0.1);
+  color: var(--navy);
+  animation: s3-float 6s ease-in-out infinite;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.s3-n-teachers { animation-delay: 0s; }
+.s3-n-parents  { animation-delay: -1.5s; }
+.s3-n-prof     { animation-delay: -3s; }
+.s3-n-state    { animation-delay: -2s; }
+.s3-n-inst     { animation-delay: -4.5s; }
+
+@keyframes s3-float {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -7px; }
+}
+
+.s3-ico {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: var(--navy);
+  box-shadow: 0 4px 10px rgba(27, 43, 91, 0.12);
+}
+
+.s3-ico svg {
+  width: 22px;
+  height: 22px;
+}
+
+.s3-node h3 {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: end;
+  margin: 0;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 700;
+}
+
+.s3-node p {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: start;
+  margin: 2px 0 0;
+  font-size: 14px;
+  line-height: 20px;
+  color: #4a5568;
+}
+
+.s3-node:hover {
+  transform: translate(-50%, calc(-50% - 4px));
+  box-shadow: 0 18px 32px rgba(27, 43, 91, 0.16);
+}
+
+.s3-tint-mint { background: #dcf7e8; }
+.s3-tint-lav  { background: #ece9fb; }
+.s3-tint-blue { background: #dfeefc; }
+.s3-tint-pink { background: #fde3e3; }
+
+.s3-n-teachers { left: 50%; top: 14%; }
+.s3-n-parents  { left: 16%; top: 40%; }
+.s3-n-state    { left: 16%; top: 80%; }
+.s3-n-prof     { left: 84%; top: 40%; }
+.s3-n-inst     { left: 84%; top: 80%; }
+
+/* The child: a glowing disc with two pulsing halos */
+.s3-child {
+  left: 50%;
+  top: 50%;
+  width: min(210px, 30%);
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff8d6 0%, #fde58a 58%, #f7cd52 100%);
+  color: var(--navy);
+  text-align: center;
+  box-shadow: 0 18px 40px rgba(201, 106, 0, 0.22), inset 0 -8px 16px rgba(201, 106, 0, 0.1);
+}
+
+.s3-child::before,
+.s3-child::after {
+  content: "";
+  position: absolute;
+  inset: -14px;
+  border-radius: 50%;
+  border: 2px solid rgba(253, 229, 138, 0.9);
+  pointer-events: none;
+  animation: s3-pulse 3s ease-out infinite;
+}
+
+.s3-child::after {
+  animation-delay: 1.5s;
+}
+
+.s3-child-k {
+  margin: 0;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 28px;
+  letter-spacing: 0.04em;
+}
+
+.s3-child-s {
+  margin: 4px 0 0;
+  font-style: italic;
+  font-size: 15px;
+  line-height: 22px;
+  color: #5b4300;
+}
+
+@keyframes s3-pulse {
+  0%   { opacity: 0.9; transform: scale(0.94); }
+  100% { opacity: 0;   transform: scale(1.22); }
+}
+
+/* Hovering a stakeholder lights up its link to the child */
+.s3-stage:has(.s3-n-teachers:hover) .s3-l-teachers,
+.s3-stage:has(.s3-n-parents:hover) .s3-l-parents,
+.s3-stage:has(.s3-n-state:hover) .s3-l-state,
+.s3-stage:has(.s3-n-prof:hover) .s3-l-prof,
+.s3-stage:has(.s3-n-inst:hover) .s3-l-inst {
+  stroke: #e8833a;
+  stroke-width: 0.6;
+}
+
+.s3-foot {
+  display: flex;
+  justify-content: center;
+  margin-top: 64px;
+}
+
+@media (max-width: 900px) {
+  .s3 {
+    padding: 72px var(--side) 80px;
+  }
+
+  .s3-title {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .s3-intro {
+    font-size: 16px;
+    line-height: 27px;
+  }
+}
+
+/* Phones: the orbit becomes a stacked grid with the child first */
+@media (max-width: 700px) {
+  .s3-head {
+    margin-bottom: 28px;
+  }
+
+  .s3-stage {
+    aspect-ratio: auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .s3-stage::before,
+  .s3-lines {
+    display: none;
+  }
+
+  .s3-node,
+  .s3-child {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: auto;
+    transform: none;
+    animation: none;
+  }
+
+  .s3-node {
+    min-width: 0;
+    padding: 12px 12px 12px 12px;
+    column-gap: 10px;
+    border-radius: 18px;
+    grid-template-columns: 38px minmax(0, 1fr);
+  }
+
+  .s3-node h3 {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .s3-node:hover {
+    transform: translateY(-3px);
+  }
+
+  .s3-ico {
+    width: 38px;
+    height: 38px;
+  }
+
+  .s3-ico svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .s3-child {
+    grid-column: 1 / -1;
+    order: -1;
+    aspect-ratio: auto;
+    padding: 26px 20px;
+    border-radius: 28px;
+    margin: 6px 0 4px;
+  }
+
+  .s3-child::before,
+  .s3-child::after {
+    display: none;
+  }
+
+  .s3-n-teachers {
+    grid-column: 1 / -1;
+  }
+
+  .s3-foot {
+    margin-top: 36px;
+  }
+
+  .s3-foot .btn {
+    width: 100%;
+  }
+}
+
+/* Hide the Read more button in the approach section */
+#approach .s3-foot { display: none; }

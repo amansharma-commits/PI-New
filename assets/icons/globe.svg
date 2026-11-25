@@ -1,0 +1,15 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="globe-icon" clip-path="url(#clip0_0_122)">
+<circle id="Ellipse" cx="7" cy="7" r="5.9" stroke-width="1.2" stroke="white"/>
+<mask id="stroke0_0_122" fill="white">
+<path d="M10.5 7C10.5 10.5899 8.933 13.5 7 13.5C5.067 13.5 3.5 10.5899 3.5 7C3.5 3.41015 5.067 0.5 7 0.5C8.933 0.5 10.5 3.41015 10.5 7Z"/>
+</mask>
+<ellipse id="Ellipse_2" cx="7" cy="7" rx="3.5" ry="6.5" stroke-width="2" stroke="white" mask="url(#stroke0_0_122)"/>
+<rect id="Rectangle" x="0.5" y="7" width="13" height="0.0001" stroke="white"/>
+</g>
+<defs>
+<clipPath id="clip0_0_122">
+<rect width="14" height="14" fill="white"/>
+</clipPath>
+</defs>
+</svg>
